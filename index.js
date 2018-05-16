@@ -122,3 +122,25 @@
 // O(n)
 
 
+
+const removeChars = (str, remove) => {
+  let result = '';
+  for (let i=0; i < str.length; i++) {
+    let add = true;
+    for (let j=0; j < remove.length; j++) {
+      if (str[i] === remove[j]) {
+        add = false;
+        break;
+      }
+    }
+    if (add) {
+      result += str[i];
+    }
+  }
+  return result;
+};
+
+console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+
+// O(n^2)
+
