@@ -59,19 +59,37 @@
 
 //  O(2n) => O(n)
 
-// const array1 = [1, 3, 6, 8, 11];
-// const array2 = [2, 3, 5, 8, 9];
-// const mergeArr = (arr1, arr2) => {
-//   const result = [];
-//   for (let i=0; i < arr1.length; i++) {
-//     result.push(arr1[i]);
-//     for (let j=0; j < arr2.length; j++) {
-//       if (arr2[j] === arr1[i]) {
-//         result.push(arr2[j]);
-//       }
-//     }
-//   }
-// };
+const array1 = [1, 3, 6, 8, 11,12];
+const array2 = [2, 3, 5, 8, 9];
+
+const mergeArr = (arr1, arr2) => {
+  const result = [];
+  let arr1Index = 0;
+  let arr2Index = 0;
+  for (let i=0; i < arr1.length + arr2.length; i++) {
+    if (arr1Index === arr1.length) {
+      return [...result, ...arr2.slice(arr2Index)];
+    }
+    if (arr2Index === arr2.length) {
+      return [...result, ...arr1.slice(arr1Index)];
+    }
+    if (arr1[arr1Index] < arr2[arr2Index]) {
+      result.push(arr1[arr1Index]);
+      arr1Index++;
+    } 
+    else if (arr1[arr1Index] > arr2[arr2Index]) {
+      result.push(arr2[arr2Index]);
+      arr2Index++;
+    }
+    else if (arr1[arr1Index] === arr2[arr2Index]) {
+      result.push(arr2[arr2Index]);
+      arr2Index++;
+    }
+  }
+  return result;
+};
+
+// O(n^2)
 
 // const mergeArr = (arr1, arr2) => {
 //   const result = [];
@@ -117,30 +135,130 @@
 //   mergeArr(arr1, arr2, res, count);
 // };
 
-// console.log(mergeArr(array1,array2));
+console.log(mergeArr(array1,array2));
 
 // O(n)
 
 
 
-const removeChars = (str, remove) => {
-  let result = '';
-  for (let i=0; i < str.length; i++) {
-    let add = true;
-    for (let j=0; j < remove.length; j++) {
-      if (str[i] === remove[j]) {
-        add = false;
-        break;
-      }
-    }
-    if (add) {
-      result += str[i];
-    }
-  }
-  return result;
-};
+// const removeChars = (str, remove) => {
+//   let result = '';
+//   for (let i=0; i < str.length; i++) {
+//     let add = true;
+//     for (let j=0; j < remove.length; j++) {
+//       if (str[i] === remove[j]) {
+//         add = false;
+//         break;
+//       }
+//     }
+//     if (add) {
+//       result += str[i];
+//     }
+//   }
+//   return result;
+// };
 
-console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+// console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
 // O(n^2)
 
+
+// const products = (arr) => {
+//   const result = [];
+//   let product;
+//   for (let i=0; i < arr.length; i++) {
+//     product = 1;
+//     for (let j=0; j < arr.length; j++) {
+//       if (i !== j) {
+//         product *= arr[j];
+//       }
+//     }
+//     result[i] = product;
+//   }
+//   return result;
+// };
+
+// console.log(products([1, 3, 9, 4]));
+
+// O(n^2)
+
+// const twoDArr = (arr) => {
+//   const result = [];
+//   for (let i=0; i < arr.length; i++) {
+//     let allOnes = true;
+//     let index = [];
+//     for (let j=0; j < 5; j++) {
+//       if (arr[i][j] === 0) {
+//         allOnes = false;
+//         result[i] = [0,0,0,0,0];
+//         index.push(j);
+//       }
+//     }
+//     if (allOnes) {
+//       let newRow = [];
+//       for(let k=0; k < 5; k++) {
+//         if (index.includes(k)) {
+//           newRow.push(0);
+//         } else {
+//           newRow.push(1);
+//         }
+//       }
+//       result[i] = newRow;
+//     }
+//   }
+//   return result;
+// };
+
+// const twoDArr = (arr) => {
+//   let newArr = [];
+//   let clearedRowHolder = [];
+//   let clearedColHolder = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let rowCount = clearedRowHolder.length;
+//     let colCount = clearedRowHolder.length;
+//     for (let j = 0; j < arr.length; j++) {
+//       if (arr[i][j] === 0) {
+//         clearedRowHolder[rowCount] = j;
+//         rowCount++;
+//         clearedColHolder[colCount] = i;
+//         colCount++;
+//       }
+//     }
+//   }
+//   for (let i = 0; i < clearedRowHolder.length; i++) {
+//     for (let j = 0; j < arr.length; j++) {
+//       arr[j][clearedRowHolder[i]] = 0;
+//     }
+//   }
+//   for (let i = 0; i < clearedColHolder.length; i++) {
+//     for (let j = 0; j < arr.length; j++) {
+//       arr[clearedColHolder[i]][j] = 0;
+//     }
+//   }
+//   return arr;
+// };
+
+// console.log(
+//   twoDArr([
+//     [1,0,1,1,0],
+//     [0,1,1,1,0],
+//     [1,1,1,1,1],
+//     [1,0,1,1,1],
+//     [1,1,1,1,1]]));
+
+// O(n^4)
+
+// const strRotation = (word1, word2) => {
+//   let str = word1 + word1;
+//   return str.includes(word2); 
+// };
+
+// const strRotation = (word1, word2) => {
+//   if (str === 0) {
+
+//   }
+   
+// };
+
+// console.log(strRotation('amazon', 'azonma')); // false
+// console.log(strRotation('amazon', 'azonam')); // true
